@@ -51,10 +51,10 @@ class CreateGroupConversationSerializer(serializers.ModelSerializer):
         fields = ['name', 'participants']
     
     def validate_participants(self, value):
-        if len(value) < 2:
-            raise serializers.ValidationError("Group must have at least 2 participants")
-        if len(value) > 50:  # Reasonable limit for group size
-            raise serializers.ValidationError("Group cannot have more than 50 participants")
+        if len(value) < 1:
+            raise serializers.ValidationError("Group must have at least 1 participant")
+        if len(value) > 49:  # Reasonable limit for group size (49 + current user = 50 max)
+            raise serializers.ValidationError("Group cannot have more than 49 additional participants")
         return value
     
     def create(self, validated_data):
