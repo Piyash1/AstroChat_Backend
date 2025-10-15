@@ -15,7 +15,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG", "False").lower() in ("true", "1")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'astrochat-backend-a0os.onrender.com']
+
+CSRF_TRUSTED_ORIGINS = ['https://astrochat-backend-a0os.onrender.com']
 
 
 # Application definition
